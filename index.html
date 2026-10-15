@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            color: #ececec;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .error-container {
+            text-align: center;
+            max-width: 500px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 72px;
+            margin: 0 0 10px 0;
+            color: #ff4b4b;
+            letter-spacing: 2px;
+        }
+        p {
+            font-size: 18px;
+            color: #888;
+            margin-bottom: 15px;
+        }
+        .info-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        .hidden-trigger-btn {
+            display: none;
+            margin-top: 50px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.12);
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s ease;
+            outline: none;
+        }
+        .hidden-trigger-btn:hover {
+            color: rgba(255, 255, 255, 0.35);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 404 障眼法畫面 -->
+    <div id="errorPage" class="error-container">
+        <h1>404</h1>
+        <p>抱歉，您尋找的網頁不存在或已被移除。</p>
+        <p class="info-text">網站在2006年的3月9號關閉</p>
+        
+        <button id="bypassLiveBtn" class="hidden-trigger-btn" onclick="trigger2014Mode()">這按下去系統自動認為你是2014</button>
+    </div>
+
+    <!-- 玩家成功認證 2014 後才會看到的網站內容 -->
+    <div id="mainWebsite" style="display: none; text-align: center; padding: 20px;">
+        <h2>歡迎來到 2014 模式主網站</h2>
+        <p>【系統已成功認證身分：2014】</p>
+        <!-- 這裡可以放置你之後要給玩家的 ARG 線索 -->
+    </div>
+
+    <script>
+        function askLiveStatus() {
+            if (localStorage.getItem('arg_user_2014') === 'true') {
+                showWebsite();
+                return;
+            }
+
+            const isLive = confirm("請問目前有在直播嗎？");
+            if (isLive) {
+                document.getElementById('bypassLiveBtn').style.display = 'inline-block';
+            }
+        }
+
+        function trigger2014Mode() {
+            localStorage.setItem('arg_user_2014', 'true');
+            alert('系統已成功將您的身份認證為 2014。');
+            document.getElementById('bypassLiveBtn').style.display = 'none';
+            showWebsite();
+        }
+
+        function showWebsite() {
+            document.getElementById('errorPage').style.display = 'none';
+            document.getElementById('mainWebsite').style.display = 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', askLiveStatus);
+    </script>
+
+</body>
+</html>
