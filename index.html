@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>夢想開始的地方...</title>
+    <title>The place where your dreams begin...</title>
     <style>
         body {
             background-color: #1a1a1a;
@@ -284,7 +284,7 @@
 </head>
 <body>
 
-    <!-- 階段一：一開始直接秀出的神秘 Email (非加密，吸引玩家點擊) -->
+    <!-- STAGE 1 -->
     <div id="stageEmail" class="stage-container active-stage">
         <div class="email-box">
             <div class="email-header">
@@ -301,7 +301,7 @@
         <button id="btnCheckPhone" class="action-btn" onclick="goToLineStage()"></button>
     </div>
 
-    <!-- 階段二：手機 Line 樣式 (中文已全面移除，改由網頁載入時動態灌入) -->
+    <!-- STAGE 2 -->
     <div id="stageLine" class="stage-container">
         <div class="phone-bg">
             <div id="txtLineTime" class="line-time"></div>
@@ -316,7 +316,7 @@
         <button id="btnClickScreen" class="action-btn" onclick="showMonologue()"></button>
     </div>
 
-    <!-- 透明內心獨白框 -->
+    <!-- OVERLAY -->
     <div id="monologueOverlay" class="monologue-overlay">
         <div class="monologue-box">
             <p id="txtMonologue" class="monologue-text"></p>
@@ -324,7 +324,7 @@
         </div>
     </div>
 
-    <!-- 階段三：404 障眼法畫面 -->
+    <!-- STAGE 3 -->
     <div id="errorPage" class="error-container">
         <h1 id="txt404Head"></h1>
         <p id="txt404Sub"></p>
@@ -332,8 +332,6 @@
         <button id="bypassLiveBtn" class="hidden-trigger-btn" onclick="trigger2014Mode()"></button>
     </div>
 
-    <!-- 階段四：2014 模式主網站 -->
+    <!-- STAGE 4 -->
     <div id="mainWebsite">
-
-    <div id="errorPage" class="error-container">
-        <h1>404</h1>
+        <div class="vip-title">ANCIENT CORE SYSTEM</div>
