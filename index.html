@@ -16,8 +16,6 @@
             margin: 0;
             overflow: hidden;
         }
-
-        /* ----- 共通劇情容器 ----- */
         .stage-container {
             display: none;
             width: 100%;
@@ -28,8 +26,6 @@
         .active-stage {
             display: block;
         }
-
-        /* 階段一：Email 樣式 */
         .email-box {
             background-color: #252525;
             border: 1px solid #444;
@@ -54,8 +50,6 @@
             white-space: pre-line;
             text-align: left;
         }
-
-        /* 階段二：手機 Line 樣式 */
         .phone-bg {
             background-color: #8c9bb0;
             border-radius: 20px;
@@ -116,8 +110,6 @@
             text-align: left;
             word-break: break-all;
         }
-
-        /* 劇情按鈕 */
         .action-btn {
             background: #333;
             border: 1px solid #666;
@@ -133,8 +125,6 @@
         .action-btn:hover {
             background: #444;
         }
-
-        /* 透明內心獨白對話框樣式 */
         .monologue-overlay {
             display: none;
             position: fixed;
@@ -180,8 +170,6 @@
             border-color: #ff4b4b;
             color: #ff4b4b;
         }
-
-        /* ----- 404 障眼法畫面樣式 ----- */
         .error-container {
             display: none;
             text-align: center;
@@ -217,8 +205,6 @@
         .hidden-trigger-btn:hover {
             color: rgba(255, 255, 255, 0.35);
         }
-
-        /* ----- 2014 模式主網站（古早豪門登入介面） ----- */
         #mainWebsite {
             display: none;
             background-color: #151518;
@@ -283,8 +269,6 @@
         .submit-vip-btn:hover {
             background: #f3cd57;
         }
-
-        /* 閃爍崩潰特效 */
         @keyframes crash-anim {
             0% { background-color: #1a1a1a; filter: invert(0); }
             20% { background-color: #ff4b4b; filter: invert(1); }
@@ -300,7 +284,7 @@
 </head>
 <body>
 
-    <!-- 階段一：一開始先顯示的神祕 Email -->
+    <!-- 階段一：一開始直接秀出的神秘 Email (非加密，吸引玩家點擊) -->
     <div id="stageEmail" class="stage-container active-stage">
         <div class="email-box">
             <div class="email-header">
@@ -314,36 +298,42 @@
 拜託 你一定要看到
 我已經沒有時間了</div>
         </div>
-        <button class="action-btn" onclick="goToLineStage()">查看手機</button>
+        <button id="btnCheckPhone" class="action-btn" onclick="goToLineStage()"></button>
     </div>
 
-    <!-- 階段二：看著與他的 Line 最後對話 -->
+    <!-- 階段二：手機 Line 樣式 (中文已全面移除，改由網頁載入時動態灌入) -->
     <div id="stageLine" class="stage-container">
         <div class="phone-bg">
-            <div class="line-time">兩年前的某天</div>
+            <div id="txtLineTime" class="line-time"></div>
             <div class="line-msg-wrapper">
-                <div class="line-avatar">品僑</div>
+                <div id="txtLineAvatar" class="line-avatar"></div>
                 <div class="line-chat-box">
-                    <div class="line-name">陳品僑</div>
-                    <div class="line-bubble">接下來如果我失蹤了 不要找我 我也絕不會在這條訊息之後 傳 any 訊息 email 給你 如果有 那絕對不是我</div>
+                    <div id="txtLineName" class="line-name"></div>
+                    <div id="txtLineBubble" class="line-bubble"></div>
                 </div>
             </div>
         </div>
-        <button class="action-btn" onclick="showMonologue()">點擊螢幕</button>
+        <button id="btnClickScreen" class="action-btn" onclick="showMonologue()"></button>
     </div>
 
-    <!-- 透明內心獨白框（疊加在 Line 畫面上方） -->
+    <!-- 透明內心獨白框 -->
     <div id="monologueOverlay" class="monologue-overlay">
         <div class="monologue-box">
-            <p class="monologue-text">他已經失蹤了超過 2 年，他爸媽一直在找他，報了好多次警……
-
-這個網站我記得，是一個很古早的 AI 對話網站。
-那顆甚至算不上 AI，只是以前有錢人家用的。
-進去的時候，會要求名字、電話、年齡……</p>
-            <button class="monologue-btn" onclick="triggerCrash()">前往404網址</button>
+            <p id="txtMonologue" class="monologue-text"></p>
+            <button id="btnGoTo404" class="monologue-btn" onclick="triggerCrash()"></button>
         </div>
     </div>
 
-    <!-- 階段三：崩潰後的 404 障眼法畫面 -->
+    <!-- 階段三：404 障眼法畫面 -->
+    <div id="errorPage" class="error-container">
+        <h1 id="txt404Head"></h1>
+        <p id="txt404Sub"></p>
+        <p id="txt2006Close" class="info-text"></p>
+        <button id="bypassLiveBtn" class="hidden-trigger-btn" onclick="trigger2014Mode()"></button>
+    </div>
+
+    <!-- 階段四：2014 模式主網站 -->
+    <div id="mainWebsite">
+
     <div id="errorPage" class="error-container">
         <h1>404</h1>
